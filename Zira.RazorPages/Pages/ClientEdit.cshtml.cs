@@ -25,12 +25,12 @@ namespace Zira.RazorPages.Pages
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Client == null)
+            if (id == null || _context.Clients == null)
             {
                 return NotFound();
             }
 
-            var client =  await _context.Client.FirstOrDefaultAsync(m => m.Id == id);
+            var client =  await _context.Clients.FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
                 return NotFound();
@@ -66,12 +66,12 @@ namespace Zira.RazorPages.Pages
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./ClientList");
         }
 
         private bool ClientExists(int id)
         {
-          return (_context.Client?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Clients?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

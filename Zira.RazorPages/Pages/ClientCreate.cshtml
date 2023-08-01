@@ -1,0 +1,46 @@
+﻿@page
+@model Zira.RazorPages.Pages.ClientCreateModel
+
+@{
+    ViewData["Title"] = "ClientCreate";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>ClientCreate</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+            <div class="form-group">
+                <label asp-for="Client.Name" class="control-label"></label>
+                <input asp-for="Client.Name" class="form-control" />
+                <span asp-validation-for="Client.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Logo" class="control-label"></label>
+                <input asp-for="Client.Logo" class="form-control" />
+                <span asp-validation-for="Client.Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Region" class="control-label"></label>
+                <input asp-for="Client.Region" class="form-control" />
+                <span asp-validation-for="Client.Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./ClientList">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

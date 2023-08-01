@@ -21,13 +21,13 @@
                 <span asp-validation-for="Client.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Client.Logo" class="control-label"></label>
-                <input asp-for="Client.Logo" class="form-control" />
-                <span asp-validation-for="Client.Logo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Client.Region" class="control-label"></label>
                 <input asp-for="Client.Region" class="form-control" />
+                <span asp-validation-for="Client.Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client.Details.FactSheets" class="control-label"></label>
+                <input asp-for="Client.Details.FactSheets" class="form-control" />
                 <span asp-validation-for="Client.Region" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,7 +38,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./ClientList">Back to List</a>
 </div>
 
 @section Scripts {

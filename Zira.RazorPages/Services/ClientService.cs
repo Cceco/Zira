@@ -10,16 +10,16 @@ namespace Zira.RazorPages.Services
 
         public ClientService(ApplicationDbContext dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<List<Client>> GetClientsAsync(string searchTerm)
         {
-            var clients = _dbContext.Client.Include(c => c.Details).AsQueryable();
+            var clients = _dbContext.Clients.Include(c => c.Details).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                clients = clients.Where(c => c.Name.Contains(searchTerm) || c.Region.Contains(searchTerm));
+                clients = clients.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()) || c.Region.Contains(searchTerm));
             }
 
             return await clients.ToListAsync();

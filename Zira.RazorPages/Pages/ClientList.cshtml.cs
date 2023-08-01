@@ -25,5 +25,11 @@ namespace Zira.RazorPages.Pages
         {
             Client = await _clientService.GetClientsAsync(SearchTerm);
         }
+
+        public IActionResult OnGetCreate()
+        {
+
+            return RedirectToPage("./Create");
+        }
     }
 }

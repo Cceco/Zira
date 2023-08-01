@@ -1,0 +1,66 @@
+﻿@page
+@model Zira.RazorPages.Pages.ClientListModel
+
+@{
+    ViewData["Title"] = "Client List";
+}
+
+<h1>Client List</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form method="get">
+    <div class="form-group">
+        <label for="searchTerm">Search:</label>
+        <input type="text" class="form-control" id="searchTerm" name="searchTerm" value="@Model.SearchTerm" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Name)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Logo)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Details)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Client) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.Logo)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                @if(item.Details != null)
+                {
+                    <a asp-page="./Details" asp-route-id="@item.Details.Id">Details</a>
+                }
+                   
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

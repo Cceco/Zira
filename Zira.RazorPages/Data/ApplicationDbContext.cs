@@ -11,18 +11,13 @@ namespace Zira.RazorPages.Data
         {
           
         }
-        public DbSet<Client> Client { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public DbSet<SeedFlag> SeedFlag { get; set; }
 
         public DbSet<Details> Details { get; set; }
 
         public DbSet<Zira.RazorPages.Data.Models.FactSheet>? FactSheet { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseInMemoryDatabase(databaseName: "ZiraDb");
-        }
     }
 
     public static class ApplicationDbContextExtensions
@@ -32,7 +27,7 @@ namespace Zira.RazorPages.Data
             if (!context.SeedFlag.Any())
             {
                 // Seed database
-                context.Client.AddRange(
+                context.Clients.AddRange(
                     new Client { Name = "Acme Corp", Region = "USA" },
                     new Client { Name = "Globex Corp", Region = "USA" },
                     new Client { Name = "Foo Industries", Region = "Canada" },
