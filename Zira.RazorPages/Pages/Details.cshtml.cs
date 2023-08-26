@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Zira.RazorPages.Data;
@@ -12,9 +8,9 @@ namespace Zira.RazorPages.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly Zira.RazorPages.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(Zira.RazorPages.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -28,17 +24,10 @@ namespace Zira.RazorPages.Pages
                 return NotFound();
             }
 
-            var details = await _context.Details
+            Details = await _context.Details
                 .Include(d => d.FactSheets)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (details == null)
-            {
-                return NotFound();
-            }
-            else 
-            {
-                Details = details;
-            }
+
             return Page();
         }
     }

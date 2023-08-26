@@ -23,19 +23,8 @@ namespace Zira.RazorPages.Pages
         [BindProperty]
         public Client Client { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGetAsync()
         {
-            if (id == null || _context.Clients == null)
-            {
-                return NotFound();
-            }
-
-            var client = await _context.Clients.FirstOrDefaultAsync(m => m.Id == id);
-            if (client == null)
-            {
-                return NotFound();
-            }
-            Client = client;
             return Page();
         }
 
@@ -48,7 +37,7 @@ namespace Zira.RazorPages.Pages
                 return Page();
             }
 
-            _context.Attach(Client).State = EntityState.Modified;
+            _context.Attach(Client).State = EntityState.Added;
 
             try
             {

@@ -6,10 +6,6 @@
 }
 
 <h1>Client List</h1>
-
-@*<p>
-    <a asp-page="Create">Create New</a>
-</p>*@
 <form method="get">
     <div class="form-group">
         <label for="searchTerm">Search:</label>
@@ -17,7 +13,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Search</button>
     <button type="button" class="btn btn-primary">Clear</button>
-    <button type="button" class="btn btn-primary" asp-page-handler="Create">Create</button>
+    <a asp-page="ClientCreate" class="btn btn-primary">Create</a>
 </form>
 
 
@@ -30,8 +26,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Client[0].Region)
             </th>
-            <th></th>
             <th>Actions</th>
+            <th>Fact Sheets</th>
         </tr>
     </thead>
     <tbody>
@@ -41,28 +37,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                @*            <td>
-            @Html.DisplayFor(modelItem => item.Logo)
-            </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Region)
-                </td>
-                @*            <td>
-            @Html.DisplayFor(modelItem => item.Details)
-            </td>*@
-                <td>
-                    @*<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |*@
-                    @if (item.Details != null)
-                    {
-                        <a asp-page="./Details" asp-route-id="@item.Details.Id">Details</a>
-                    }
-
-                    @*<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
-                </td>
                 <td>
                     <a asp-page="./ClientEdit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>
+                        @if (item.Details.FactSheets != null && item.Details.FactSheets.Any())
+                        {
+                            @Html.DisplayFor(modelItem => item.Details.FactSheets.Count)
+                        }
+                        else{
+                            @Html.Raw("0")
+                        }
                 </td>
             </tr>
         }

@@ -15,14 +15,14 @@ namespace Zira.RazorPages.Services
 
         public async Task<List<Client>> GetClientsAsync(string searchTerm)
         {
-            var clients = _dbContext.Clients.Include(c => c.Details).AsQueryable();
+            var query = _dbContext.Clients.Include(c => c.Details.FactSheets).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                clients = clients.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()) || c.Region.Contains(searchTerm));
+                query = query.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()) || c.Region.Contains(searchTerm));
             }
 
-            return await clients.ToListAsync();
+            return await query.ToListAsync();
         }
     }
 }

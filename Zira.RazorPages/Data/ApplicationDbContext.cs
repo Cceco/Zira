@@ -17,7 +17,7 @@ namespace Zira.RazorPages.Data
 
         public DbSet<Details> Details { get; set; }
 
-        public DbSet<Zira.RazorPages.Data.Models.FactSheet>? FactSheet { get; set; }
+        public DbSet<FactSheet> FactSheet { get; set; }
     }
 
     public static class ApplicationDbContextExtensions
@@ -28,16 +28,13 @@ namespace Zira.RazorPages.Data
             {
                 // Seed database
                 context.Clients.AddRange(
-                    new Client { Name = "Acme Corp", Region = "USA" },
-                    new Client { Name = "Globex Corp", Region = "USA" },
-                    new Client { Name = "Foo Industries", Region = "Canada" },
-                    new Client { Name = "Bar Enterprises", Region = "Canada" },
-                    new Client { Name = "Brooks MacDonald", Region = "EMEA"}
-                );
-
-                context.Details.Add(new Details
-                {
-                    FactSheets = new List<FactSheet>
+                    new Client 
+                    { 
+                        Name = "Acme Corp", 
+                        Region = "USA",
+                        Details = new Details
+                        {
+                            FactSheets = new List<FactSheet>
                        {
                            new FactSheet
                            {
@@ -62,11 +59,18 @@ namespace Zira.RazorPages.Data
                                NarrativeManager = "No",
                                PRBProductionJobs = new List<PRBProductionJob>
                                { new PRBProductionJob { Frequency = FrequencyType.Daily, Name = "BMIS Monthly Job" } },
-                               Contacts = new List<Contact> 
+                               Contacts = new List<Contact>
                                { new Contact { Name = "Gosho", Type = ContactType.ImplementationTeam } }
                            }
                        }
-                }); 
+                        }
+                    },
+
+                    new Client { Name = "Globex Corp", Region = "USA" },
+                    new Client { Name = "Foo Industries", Region = "Canada" },
+                    new Client { Name = "Bar Enterprises", Region = "Canada" },
+                    new Client { Name = "Brooks MacDonald", Region = "EMEA"}
+                );
 
                 // Set seed flag
                 context.SeedFlag.Add(new SeedFlag { HasSeeded = true });

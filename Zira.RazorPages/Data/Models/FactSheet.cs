@@ -3,6 +3,7 @@
     public class FactSheet
     {
         public int Id { get; set; }
+        public int DetailsId { get; set; }
         public string DocumentName { get; set; }
         public string DocumentSlimFilePath { get; set; }
         public string Frequency { get; set; }

@@ -1,0 +1,86 @@
+﻿@page
+@model Zira.RazorPages.Pages.FactSheetCreateModel
+
+@{
+    ViewData["Title"] = "FactSheetCreate";
+}
+
+<h1>FactSheetCreate</h1>
+
+<h4>FactSheet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <input type="hidden" asp-for="ClientId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FactSheet.DocumentName" class="control-label"></label>
+                <input asp-for="FactSheet.DocumentName" class="form-control" />
+                <span asp-validation-for="FactSheet.DocumentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.DocumentSlimFilePath" class="control-label"></label>
+                <input asp-for="FactSheet.DocumentSlimFilePath" class="form-control" />
+                <span asp-validation-for="FactSheet.DocumentSlimFilePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.Frequency" class="control-label"></label>
+                <input asp-for="FactSheet.Frequency" class="form-control" />
+                <span asp-validation-for="FactSheet.Frequency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.OutputType" class="control-label"></label>
+                <input asp-for="FactSheet.OutputType" class="form-control" />
+                <span asp-validation-for="FactSheet.OutputType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.SerialNumber" class="control-label"></label>
+                <input asp-for="FactSheet.SerialNumber" class="form-control" />
+                <span asp-validation-for="FactSheet.SerialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.MultiLanguage" class="control-label"></label>
+                <input asp-for="FactSheet.MultiLanguage" class="form-control" />
+                <span asp-validation-for="FactSheet.MultiLanguage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.CustomFont" class="control-label"></label>
+                <input asp-for="FactSheet.CustomFont" class="form-control" />
+                <span asp-validation-for="FactSheet.CustomFont" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.CustomColorScheme" class="control-label"></label>
+                <input asp-for="FactSheet.CustomColorScheme" class="form-control" />
+                <span asp-validation-for="FactSheet.CustomColorScheme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.Notes" class="control-label"></label>
+                <input asp-for="FactSheet.Notes" class="form-control" />
+                <span asp-validation-for="FactSheet.Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.HardcodedSection" class="control-label"></label>
+                <input asp-for="FactSheet.HardcodedSection" class="form-control" />
+                <span asp-validation-for="FactSheet.HardcodedSection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FactSheet.NarrativeManager" class="control-label"></label>
+                <input asp-for="FactSheet.NarrativeManager" class="form-control" />
+                <span asp-validation-for="FactSheet.NarrativeManager" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
