@@ -26,7 +26,8 @@ namespace Zira.RazorPages.Pages
                 return NotFound();
             }
 
-            Client = await _context.Clients.SingleOrDefaultAsync(m => m.Id == id);
+            Client? client = await _context.Clients.SingleOrDefaultAsync(m => m.Id == id);
+            Client = client;
 
             if (Client == null)
             {
