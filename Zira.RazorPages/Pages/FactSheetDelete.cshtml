@@ -83,6 +83,6 @@
     <form method="post">
         <input type="hidden" asp-for="FactSheet.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-page="./Details" asp-route-id=@Model.FactSheet?.DetailsId>Back to Details</a>
+        <a asp-page="./Details" asp-route-id=@Model.FactSheet?.DetailsId class="btn btn-primary">Back to Details</a>
     </form>
 </div>

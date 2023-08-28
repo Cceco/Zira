@@ -15,11 +15,9 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Details.Id)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.Details.FactSheets)
                     </th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,11 +26,9 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.DocumentName)
                         </td>
+                        <td></td>
                         <td>
                             <a asp-page="./FactSheetDetails" asp-route-id="@item.Id">Details</a>
                             <a asp-page="./FactSheetEdit" asp-route-id="@item.Id">Edit</a>
@@ -46,6 +42,6 @@
 
 </div>
 <div>
-    <a asp-page="./FactSheetCreate" asp-route-id=@Request.Query["id"]>Create Fact Sheet</a>
-    <a asp-page="./ClientList">Back to List</a>
+    <a asp-page="./FactSheetCreate" asp-route-id=@Request.Query["id"] class="btn btn-primary">Create FactSheet</a>
+    <a asp-page="./ClientList" class="btn btn-primary">Back to List</a>
 </div>
