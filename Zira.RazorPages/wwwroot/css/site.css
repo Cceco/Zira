@@ -21,3 +21,9 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+.centered {
+    text-align: center;
+    vertical-align:middle;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}

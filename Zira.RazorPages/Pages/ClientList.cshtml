@@ -20,31 +20,31 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <td class="centered">
                 @Html.DisplayNameFor(model => model.Client[0].Name)
-            </th>
-            <th>
+            </td>
+            <td class="centered">
                 @Html.DisplayNameFor(model => model.Client[0].Region)
-            </th>
-            <th>Actions</th>
-            <th>FactSheets</th>
+            </td>
+            <th class="centered">Actions</th>
+            <th class="centered">Number of FactSheets</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Client)
         {
             <tr>
-                <td>
+                <td class="centered">
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td class="centered">
                     @Html.DisplayFor(modelItem => item.Region)
-                <td>
+                <td class="centered">
                     <a asp-page="./ClientEdit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
-                <td>
+                <td class="centered">
                         @if (item.Details.FactSheets != null && item.Details.FactSheets.Any())
                         {
                             @Html.DisplayFor(modelItem => item.Details.FactSheets.Count)
